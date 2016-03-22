@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.media.MediaView?>
+
+<fx:root id="root" type="javafx.scene.layout.StackPane" alignment="BOTTOM_LEFT" xmlns:fx="http://javafx.com/fxml" onMouseMoved="#handleMouseMoved" >
+    <MediaView StackPane.alignment="TOP_LEFT" fx:id="mw" />
+    <HBox fx:id="controlBar" alignment="CENTER_LEFT" spacing="10" VBox.vgrow="NEVER" >
+        <padding><Insets left="5" right="5" top="5" bottom="5" /></padding>
+        <ImageView fitHeight="20" fitWidth="20" fx:id="playImg" />
+        <ImageView fitHeight="20" fitWidth="20" fx:id="fullScrImg" />
+        <ImageView fitHeight="20" fitWidth="20" fx:id="resetImg" />
+        <Label minWidth="70" fx:id="displayTime" />
+        <Slider min="0" max="100" HBox.hgrow="ALWAYS" fx:id="progressSlider"/>
+        <ImageView fitHeight="20" fitWidth="20" fx:id="volImg" />
+        <Slider min="0" max="1.0" maxWidth="80" minWidth="80" fx:id="volSlider"/>
+    </HBox>
+    <stylesheets>
+        <URL value="@/mediacontrol/mediacontrol.css" />
+    </stylesheets>
+</fx:root>

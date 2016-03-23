@@ -10,9 +10,9 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.media.MediaView?>
 
-<fx:root id="root" type="javafx.scene.layout.StackPane" alignment="BOTTOM_LEFT" xmlns:fx="http://javafx.com/fxml" onMouseMoved="#handleMouseMoved" >
-    <MediaView StackPane.alignment="TOP_LEFT" fx:id="mw" />
-    <HBox fx:id="controlBar" alignment="CENTER_LEFT" spacing="10" VBox.vgrow="NEVER" >
+<fx:root fx:id="root" type="javafx.scene.layout.StackPane" xmlns:fx="http://javafx.com/fxml" onMouseMoved="#handleMouseMoved" >
+    <MediaView StackPane.alignment="CENTER_LEFT" fx:id="mw" />
+    <HBox StackPane.alignment="BOTTOM_LEFT" spacing="10" VBox.vgrow="NEVER" maxHeight="30" fx:id="controlBar" >
         <padding><Insets left="5" right="5" top="5" bottom="5" /></padding>
         <ImageView fitHeight="20" fitWidth="20" fx:id="playImg" />
         <ImageView fitHeight="20" fitWidth="20" fx:id="fullScrImg" />

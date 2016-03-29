@@ -379,6 +379,15 @@ public class MediaControl extends StackPane
         lastMoved = Instant.now();
     }
     
+    public void abortFullScreen()
+    {
+        if (fullScreenMediaControl != null)
+        {
+            fullScreenMediaControl.mw.getMediaPlayer().pause();
+            ((Stage) fullScreenMediaControl.getScene().getWindow()).hide();
+        }
+    }
+    
     public void pauseMedia()
     {
         mp.pause();

@@ -376,7 +376,7 @@ public class MediaControl extends StackPane
         lastMoved = Instant.now();
     }
     
-    private void pauseMedia()
+    public void pauseMedia()
     {
         mp.pause();
         playImg.setImage(new Image(
@@ -384,7 +384,7 @@ public class MediaControl extends StackPane
         ));
     }
     
-    private void playMedia()
+    public void playMedia()
     {
         mp.play();
         playImg.setImage(new Image(

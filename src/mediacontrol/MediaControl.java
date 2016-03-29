@@ -51,6 +51,7 @@ public class MediaControl extends StackPane
     @FXML private Slider progressSlider;
     @FXML private ImageView volImg;
     @FXML private Slider volSlider;
+    @FXML public MediaControl fullScreenMediaControl;
     
     // Shorthand constructors.
     public MediaControl(Media mediaFile)
@@ -317,7 +318,7 @@ public class MediaControl extends StackPane
                     / mp.getCycleDuration().toMillis();
             Stage stage = new Stage();
             // Get all the user values and pass them on.
-            MediaControl nmc = new MediaControl(media,
+            fullScreenMediaControl = new MediaControl(media,
                     currentStatus == Status.PLAYING,
                     loopNumber,
                     waitHideControlBar,
@@ -326,8 +327,8 @@ public class MediaControl extends StackPane
                     progress,
                     mp.getVolume());
             // Set fullscreen.
-            nmc.isFullScreen = true;
-            Scene scene = new Scene(nmc);
+            fullScreenMediaControl.isFullScreen = true;
+            Scene scene = new Scene(fullScreenMediaControl);
             // Close on "Escape".
             scene.setOnKeyPressed(ke -> {
                 if (ke.getCode() == KeyCode.ESCAPE) {
@@ -342,7 +343,7 @@ public class MediaControl extends StackPane
             stage.showAndWait();
             
             // Whene it's closed we need to update our player with values form the closed one.
-            MediaPlayer closedMp = nmc.mw.getMediaPlayer();
+            MediaPlayer closedMp = fullScreenMediaControl.mw.getMediaPlayer();
             // Recover status.
             currentStatus = closedMp.getStatus();
             closedMp.pause();
@@ -357,6 +358,8 @@ public class MediaControl extends StackPane
             // Apply progress.
             mp.seek(mediaDuration.multiply(progress));
             mp.setVolume(closedMp.getVolume());
+            
+            fullScreenMediaControl = null;
         }
     }
     
@@ -382,6 +385,13 @@ public class MediaControl extends StackPane
         playImg.setImage(new Image(
                 getClass().getResource("/mediacontrol/buttonimages/Play.png").toString()
         ));
+        if (fullScreenMediaControl != null)
+        {
+            fullScreenMediaControl.mw.getMediaPlayer().pause();
+            fullScreenMediaControl.playImg.setImage(new Image(
+                getClass().getResource("/mediacontrol/buttonimages/Play.png").toString()
+            ));
+        }
     }
     
     public void playMedia()
